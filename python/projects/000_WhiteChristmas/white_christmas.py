@@ -1,7 +1,7 @@
 import array
 import time
 
-import jim.audio.note
+import utils.audio.note
 import RPi.GPIO as GPIO
 
 from threading import Thread
@@ -96,7 +96,7 @@ def buttonPressed(channel):
     if (GPIO.input(IN_BUTTON)):
         print("Button rising")
         if (currentNote is None):
-            currentNote = jim.audio.note.Note(SONG_WHITE_CHRISTMAS[currentNoteIndex])
+            currentNote = utils.audio.note.Note(SONG_WHITE_CHRISTMAS[currentNoteIndex])
             currentNoteIndex = currentNoteIndex + 1
             currentNote.play(-1)
         else:
@@ -110,7 +110,7 @@ if __name__ == '__main__':
     '''
     for n in SONG_WHITE_CHRISTMAS:
         print("Freq = " + str(n))
-        note = jim.audio.note.Note(n)
+        note = utils.audio.note.Note(n)
         note.play(loops=-1)
         time.sleep(1)
         note.stop()
